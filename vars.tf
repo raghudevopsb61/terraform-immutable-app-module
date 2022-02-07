@@ -13,3 +13,6 @@ variable "LB_PRIVATE" {
 }
 
 variable "LB_RULE_PRIORITY" {}
+
+variable "MIN_SIZE" {}
+variable "MAX_SIZE" {}
