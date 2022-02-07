@@ -1,17 +1,17 @@
-resource "aws_launch_template" "foo" {
-  name                                 = "foo"
-  image_id                             = "ami-test"
-  instance_initiated_shutdown_behavior = "terminate"
+resource "aws_launch_template" "launch-template" {
+  name                                 = "${var.COMPONENT}-${var.ENV}"
+  image_id                             = data.aws_ami.ami.id
+  instance_initiated_shutdown_behavior = "stop"
   instance_market_options {
     market_type = "spot"
   }
-  instance_type          = "t2.micro"
-  vpc_security_group_ids = ["sg-12345678"]
+  instance_type          = var.INSTANCE_TYPE
+  vpc_security_group_ids = [aws_security_group.sg.id]
   tag_specifications {
     resource_type = "instance"
     tags = {
-      Name = "test"
+      Name = "${var.COMPONENT}-${var.ENV}"
     }
   }
-  user_data = filebase64("${path.module}/example.sh")
+  //user_data = filebase64("${path.module}/example.sh")
 }
