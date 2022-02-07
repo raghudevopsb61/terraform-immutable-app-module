@@ -3,10 +3,11 @@ resource "aws_launch_template" "launch-template" {
   image_id = data.aws_ami.ami.id
   instance_market_options {
     market_type = "spot"
+    spot_options {
+      instance_interruption_behavior = "stop"
+    }
   }
-  spot_options {
-    instance_interruption_behavior = "stop"
-  }
+
   instance_type          = var.INSTANCE_TYPE
   vpc_security_group_ids = [aws_security_group.sg.id]
   tag_specifications {
