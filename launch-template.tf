@@ -16,5 +16,5 @@ resource "aws_launch_template" "launch-template" {
       Name = "${var.COMPONENT}-${var.ENV}"
     }
   }
-  //user_data = filebase64("${path.module}/example.sh")
+  user_data = filebase64("${path.module}/env-${var.ENV}.sh")
 }
