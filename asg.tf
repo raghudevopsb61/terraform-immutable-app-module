@@ -26,8 +26,7 @@ resource "aws_autoscaling_group" "asg" {
 }
 
 resource "aws_autoscaling_policy" "cpu-tracking-policy" {
-  name            = "whenCPULoadIncrease"
-  adjustment_type = "ChangeInCapacity"
+  name = "whenCPULoadIncrease"
   target_tracking_configuration {
     predefined_metric_specification {
       predefined_metric_type = "ASGAverageCPUUtilization"
