@@ -21,4 +21,6 @@ resource "aws_autoscaling_group" "asg" {
     propagate_at_launch = true
   }
 
+  target_group_arns = [aws_lb_target_group.tg.arn]
+
 }
