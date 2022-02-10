@@ -12,6 +12,6 @@ fi
 
 if [ -f /etc/nginx/default.d/roboshop.conf ]; then
   sed -i -e 's/ENV/prod/' /etc/nginx/default.d/roboshop.conf /etc/filebeat/filebeat.yml
-  set-hostname -skip-apply ${COMPONENT}-prod
+  set-hostname -skip-apply frontend-prod
   systemctl restart nginx
 fi
