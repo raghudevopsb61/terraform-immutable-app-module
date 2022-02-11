@@ -6,6 +6,7 @@ if [ -d /home/roboshop ]; then
     sed -i -e 's/ENV/dev/' /etc/systemd/system/${COMPONENT}.service /etc/filebeat/filebeat.yml
     set-hostname -skip-apply ${COMPONENT}-dev
     systemctl daemon-reload
+    systemctl enable ${COMPONENT}
     systemctl restart ${COMPONENT}
   fi
 fi
